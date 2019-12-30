@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-upsert',
   templateUrl: './upsert.component.html',
-  styleUrls: ['./upsert.component.css']
+  styleUrls: ['./upsert.component.scss']
 })
 export class UpsertComponent implements OnInit {
 
