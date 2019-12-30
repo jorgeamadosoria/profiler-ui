@@ -4,11 +4,7 @@
 
 export const environment = {
   production: false,
-<<<<<<< HEAD
   URL: 'http://localhost:8080' 
-=======
-  url: 'https://profiler-demo.herokuapp.com/'
->>>>>>> 78984f0cf5c7ddcdc17262e21c1608b258ab7434
 };
 
 /*
