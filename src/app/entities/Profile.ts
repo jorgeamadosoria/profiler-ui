@@ -1,7 +1,7 @@
 import { ProfileAttributes } from "./ProfileAttributes";
 
-export interface Profile {
-    id?:number,
+export class Profile {
+    id?:number;
     attributes:ProfileAttributes;
-	description:string
+	description:string;
 };

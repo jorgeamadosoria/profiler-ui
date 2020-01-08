@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Organization } from 'src/app/entities/Organization';
+import { Service } from 'src/app/service/service';
 
 @Component({
   selector: 'app-upsert',
@@ -9,10 +10,21 @@ import { Organization } from 'src/app/entities/Organization';
 export class UpsertComponent implements OnInit {
 
   model: Organization;
-  constructor() { }
+  constructor(
+    private service: Service,
+    private path:string='/organizations/') 
+  { }
 
   ngOnInit() {
+    this.model = new Organization();
   }
 
-  onSubmit() { console.log('submitted'); }
+  onSubmit() { 
+    this.service.upsert(this.path,this.model);
+    console.log('submitted'); 
+
+}
+
+
+  onReset() { this.model = new Organization(); console.log('reset'); }
 }

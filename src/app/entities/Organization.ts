@@ -1,6 +1,6 @@
-export interface Organization {
-    id?:number,
-    name:string,
-    description:string,
-    logo:string
+export class Organization {
+    id?:number;
+    name:string;
+    description:string;
+    logo:string;
 }

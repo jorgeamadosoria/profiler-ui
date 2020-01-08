@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ClientService } from '../client.service';
+import { Service } from 'src/app/service/service';
 
 @Component({
   selector: 'app-list',
@@ -8,17 +8,20 @@ import { ClientService } from '../client.service';
 })
 export class ListComponent implements OnInit {
 
-  clients: any;
+  items: any;
 
   constructor(
-    private service: ClientService
+    private service: Service,
+    private path:string='/organizations/'
   ) { }
 
+  listCallback(data:any){
+      this.items = data;
+      console.log(this.items);
+  }
+
   ngOnInit() {
-    this.service.getClients().subscribe( (data) => {
-      this.clients = data['_embedded'];
-      console.log(this.clients);
-    });
+    this.service.list(this.path).subscribe( this.listCallback);
   }
 
 }

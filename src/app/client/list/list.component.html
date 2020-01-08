@@ -3,5 +3,3 @@
 <ul *ngIf="clients">
     <li *ngFor="let client of clients._embedded">{{client | json }}</li>
 </ul>
-<p class="msg-warning">It seems like we don't have any client yet. <a routerLink="/client/upsert">Let's create some records!</a></p>
-<a class="btn" routerLink="/client/upsert">New client</a>
