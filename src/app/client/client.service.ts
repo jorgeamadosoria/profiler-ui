@@ -12,6 +12,7 @@ export class ClientService {
   ) { }
 
   public getClients() {
-    return this.http.get(`${environment.url}clients`);
+    return this.http.get(environment.URL
+       + "clients");
   }
 }

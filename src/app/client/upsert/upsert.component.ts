@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Organization } from 'src/app/entities/Organization';
 
 @Component({
   selector: 'app-upsert',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UpsertComponent implements OnInit {
 
+  model: Organization;
   constructor() { }
 
   ngOnInit() {
   }
 
+  onSubmit() { console.log('submitted'); }
 }
