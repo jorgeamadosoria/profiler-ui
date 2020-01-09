@@ -21,7 +21,7 @@ export class ListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.service.list(this.path).subscribe( this.listCallback);
+    this.service.list(this.path).subscribe( data => this.listCallback(data));
   }
 
 }
