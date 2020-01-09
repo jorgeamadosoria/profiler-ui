@@ -8,11 +8,10 @@ import { Service } from 'src/app/service/service';
   styleUrls: ['./upsert.component.scss']
 })
 export class UpsertComponent implements OnInit {
-
+  private path:string='controllers/organizations/';
   model: Organization;
   constructor(
-    private service: Service,
-    private path:string='/organizations/') 
+    private service: Service) 
   { }
 
   ngOnInit() {

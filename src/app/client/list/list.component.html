@@ -1,5 +1,6 @@
 <h1>Clients</h1>
 <hr>
-<ul *ngIf="clients">
-    <li *ngFor="let client of clients._embedded">{{client | json }}</li>
+{{items}}
+<ul *ngIf="items">
+    <li *ngFor="let item of items">{{item }}</li>
 </ul>

@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./detail.component.scss']
 })
 export class DetailComponent implements OnInit {
-
+  private path:string='controllers/organizations/';
   constructor() { }
 
   ngOnInit() {

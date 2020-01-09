@@ -7,12 +7,12 @@ import { Service } from 'src/app/service/service';
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit {
-
+  private path:string='controllers/organizations/';
   items: any;
 
   constructor(
-    private service: Service,
-    private path:string='/organizations/'
+    private service: Service
+    
   ) { }
 
   listCallback(data:any){
