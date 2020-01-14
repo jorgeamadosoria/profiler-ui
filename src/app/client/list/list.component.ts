@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Service } from 'src/app/service/service';
+import { RouterModule, Routes, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-list',
@@ -11,8 +12,8 @@ export class ListComponent implements OnInit {
   items: any;
 
   constructor(
-    private service: Service
-    
+    private service: Service,
+    private route: ActivatedRoute
   ) { }
 
   listCallback(data:any){
@@ -22,6 +23,10 @@ export class ListComponent implements OnInit {
 
   ngOnInit() {
     this.service.list(this.path).subscribe( data => this.listCallback(data));
+  }
+
+  gotoAdd(){
+
   }
 
 }

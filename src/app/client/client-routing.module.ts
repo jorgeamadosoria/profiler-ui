@@ -8,8 +8,8 @@ import { DetailComponent } from './detail/detail.component';
 const routes: Routes = [
   { path: '', redirectTo: 'list' },
   { path: 'list', component:ListComponent },
-  { path: 'upsert', component:UpsertComponent },
-  { path: 'detail', component:DetailComponent },
+  { path: 'upsert/:id', component:UpsertComponent },
+  { path: 'detail/:id', component:DetailComponent },
 ];
 
 @NgModule({
