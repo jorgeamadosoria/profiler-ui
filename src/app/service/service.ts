@@ -15,18 +15,18 @@ export class Service {
   ) { }
 
   public list(path: string) {
-    return this.http.get(environment.URL + '/' + path, { headers: this.headers});
+    return this.http.get(environment.URL+ path, { headers: this.headers});
   }
 
   public upsert(path: string, entity: any) {
-    return this.http.post(environment.URL + '/' + path, entity);
+    return this.http.post(environment.URL + path, entity, { headers: this.headers});
   }
 
   public delete(path: string, id: number) {
-    return this.http.delete(environment.URL + '/' + path + '/' + id);
+    return this.http.delete(environment.URL + path + '/' + id, { headers: this.headers});
   }
 
   public get(path: string, id: number) {
-    return this.http.get(environment.URL + '/' + path + '/' + id);
+    return this.http.get(environment.URL + path + '/' + id, { headers: this.headers});
   }
 }

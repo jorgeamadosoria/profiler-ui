@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Organization } from 'src/app/entities/Organization';
 import { Service } from 'src/app/service/service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-upsert',
@@ -9,31 +9,35 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./upsert.component.scss']
 })
 export class UpsertComponent implements OnInit {
-  private path = 'controllers/organizations/';
+  private path = 'controllers/organizations';
   model: Organization;
   constructor(
     private service: Service,
-    private route: ActivatedRoute) {
+    private route: Router,
+    private actRoute: ActivatedRoute) {
     }
 
   ngOnInit() {
     console.log(this.route);
     this.model = new Organization({});
-    this.route.params.subscribe((routeParams: { id: number; }) => {
-      console.log(routeParams.id);
+    this.actRoute.params.subscribe((routeParams: { id: number; }) => {
+    //  console.log(routeParams.id);
       if (routeParams.id) {
           this.service.get(this.path, routeParams.id)
-          .subscribe((data) => this.model = new Organization({id: routeParams.id}));
+          .subscribe((data) => this.model = new Organization(data));
         }
       });
   }
 
   onSubmit() {
-    this.service.upsert(this.path, this.model);
-    console.log('submitted');
+    console.log(this.model);
+    this.service.upsert(this.path, this.model).subscribe(data => this.route.navigate(['client/list']));
+    //  console.log('submitted');
+  }
 
-}
 
-
-  onReset() { this.model = new Organization(); console.log('reset'); }
+  onReset() { 
+    this.model = new Organization({id:this.model.id}); 
+    //console.log('reset'); 
+  }
 }

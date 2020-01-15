@@ -8,12 +8,12 @@ import { RouterModule, Routes, ActivatedRoute } from '@angular/router';
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit {
-  private path:string='controllers/organizations/';
+  private path:string='controllers/organizations';
   items: any;
 
   constructor(
-    private service: Service,
-    private route: ActivatedRoute
+    private service: Service
+    
   ) { }
 
   listCallback(data:any){
@@ -25,8 +25,8 @@ export class ListComponent implements OnInit {
     this.service.list(this.path).subscribe( data => this.listCallback(data));
   }
 
-  gotoAdd(){
-
+  onDelete(id:number){
+    this.service.delete(this.path,id).subscribe(data => this.items = this.items.filter((value) => value.id != id));
   }
 
 }

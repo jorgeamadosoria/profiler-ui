@@ -22,6 +22,6 @@
                [(ngModel)]="model.logo" name="logo"
                #logo="ngModel">
       </div>
-      <button type="submit" class="btn btn-success" [disabled]="!form.valid">Submit</button>
-      <button type="button" class="btn btn-default" (click)="onReset(); form.reset()">Reset</button>
+      <button type="button" class="btn btn-success" (click)="onSubmit()" [disabled]="!form.valid">Submit</button>
+      <button type="button" class="btn btn-default" (click)="onReset()">Reset</button>
     </form>
