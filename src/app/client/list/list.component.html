@@ -1,6 +1,8 @@
 <h1>Clients</h1>
 <hr>
 <a type="button" routerLink="/client/upsert">Add</a>
+<a type="button" routerLink="/client/1/upsert">Add</a>
+<a type="button" routerLink="/client/2/upsert">Add</a>
 <ul *ngIf="items">
     <li *ngFor="let item of items">{{item | json}}</li>
 </ul>

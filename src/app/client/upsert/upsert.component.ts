@@ -9,22 +9,28 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./upsert.component.scss']
 })
 export class UpsertComponent implements OnInit {
-  private path:string='controllers/organizations/';
+  private path = 'controllers/organizations/';
   model: Organization;
   constructor(
     private service: Service,
-    private route: ActivatedRoute) 
-  { }
+    private route: ActivatedRoute) {
+    }
 
   ngOnInit() {
-    var id = +this.route.snapshot.paramMap.get("id");
-    this.service.get(this.path,id).subscribe((data) => this.model = new Organization(data));
-    this.model = new Organization();
+    console.log(this.route);
+    this.model = new Organization({});
+    this.route.params.subscribe((routeParams: { id: number; }) => {
+      console.log(routeParams.id);
+      if (routeParams.id) {
+          this.service.get(this.path, routeParams.id)
+          .subscribe((data) => this.model = new Organization({id: routeParams.id}));
+        }
+      });
   }
 
-  onSubmit() { 
-    this.service.upsert(this.path,this.model);
-    console.log('submitted'); 
+  onSubmit() {
+    this.service.upsert(this.path, this.model);
+    console.log('submitted');
 
 }
 

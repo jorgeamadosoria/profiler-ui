@@ -4,7 +4,7 @@ export class Organization {
     description:string;
     logo:string;
 
-    constructor(data:any = {}){
+    constructor(data: any = {}) {
         this.id = data.id;
         this.name = data.name;
         this.description = data.description;
