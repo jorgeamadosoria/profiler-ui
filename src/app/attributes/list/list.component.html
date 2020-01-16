@@ -1,4 +1,4 @@
-<h1>Clients</h1>
+<h1>Attributes</h1>
 <hr>
 <a routerLink="../upsert">Add</a>
 <table>
@@ -6,6 +6,7 @@
     <th>Id</th>
     <th>Name</th>
     <th>Description</th>
+    <th>Type</th>
     <th>Actions</th>
 </tr>
     
@@ -15,6 +16,7 @@
         <td>{{item.id}}</td>
         <td>{{item.name}}</td>
         <td>{{item.description}}</td>
+        <td>{{item.type}}</td>
         <td>
             <a href="#" [routerLink]="['../detail',item.id]">Detail</a>&nbsp;&nbsp;<a [routerLink]="['../upsert',item.id]">Edit</a>&nbsp;&nbsp;<a href="#" (click)="onDelete(item.id);false">Delete</a>
         </td>

@@ -22,6 +22,10 @@ export class Service {
     return this.http.post(environment.URL + path, entity, { headers: this.headers});
   }
 
+  public upsertList(path: string, entities: any[]) {
+    return this.http.post(environment.URL + path, entities, { headers: this.headers});
+  }
+
   public delete(path: string, id: number) {
     return this.http.delete(environment.URL + path + '/' + id, { headers: this.headers});
   }

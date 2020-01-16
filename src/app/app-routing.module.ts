@@ -7,7 +7,11 @@ const routes: Routes = [
   { path: '', component: LoginComponent },
   { 
     path: 'client', 
-    loadChildren: () => import('./client/client.module').then(m => m.ClientModule),
+    loadChildren: () => import('./client/client.module').then(m => m.ClientModule)
+  },
+  {
+    path: 'attributes', 
+    loadChildren: () => import('./attributes/attributes.module').then(m => m.AttributeModule),
   }
 ];
 

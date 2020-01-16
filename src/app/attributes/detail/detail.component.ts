@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Service } from 'src/app/service/service';
-import { Organization } from 'src/app/entities/Organization';
+import { Attribute } from 'src/app/entities/Attribute';
 
 @Component({
   selector: 'app-detail',
@@ -9,15 +9,15 @@ import { Organization } from 'src/app/entities/Organization';
   styleUrls: ['./detail.component.scss']
 })
 export class DetailComponent implements OnInit {
-  private path = 'controllers/organizations';
-  model: Organization;
+  private path = 'controllers/attributes';
+  model: Attribute;
   constructor(
     private service: Service,
     private actRoute: ActivatedRoute) { }
 
   detailCallback(data:any){
       console.log(data);
-      this.model = new Organization(data);
+      this.model = new Attribute(data);
   }
 
   ngOnInit() {
