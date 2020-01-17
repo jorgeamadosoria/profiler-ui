@@ -36,8 +36,8 @@ export class UpsertComponent implements OnInit {
   }
 
 
-  onReset() { 
-    this.model = new Organization({id:this.model.id}); 
-    //console.log('reset'); 
+  onReset() {
+    this.model = new Organization({id: this.model.id});
+    // console.log('reset');
   }
 }
