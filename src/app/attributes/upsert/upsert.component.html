@@ -17,7 +17,7 @@
                #description="ngModel">
       </div>
       <div class="form-group">
-        <select id="type" name="type" class='select-option' required [(ngModel)]='model.type' (ngModelChange)='onOptionsSelected($event)'>
+        <select id="type" name="type" class='select-option' required [(ngModel)]='model.type'>
           <option class='option' *ngFor='let type of types' [value]="type">{{type}}</option>
         </select>
       </div>

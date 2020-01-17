@@ -18,7 +18,10 @@
         <td>{{item.description}}</td>
         <td>{{item.type}}</td>
         <td>
-            <a href="#" [routerLink]="['../detail',item.id]">Detail</a>&nbsp;&nbsp;<a [routerLink]="['../upsert',item.id]">Edit</a>&nbsp;&nbsp;<a href="#" (click)="onDelete(item.id);false">Delete</a>
+            <a href="#" [routerLink]="['../detail',item.id]">Detail</a>&nbsp;&nbsp;
+            <a href="#" [routerLink]="['../upsert',item.id]">Edit</a>&nbsp;&nbsp;
+            <a href="#" [routerLink]="['../rels',item.id]">Rels</a>&nbsp;&nbsp;
+            <a href="#" (click)="onDelete(item.id);false">Delete</a>
         </td>
     </tr>
 </tbody>

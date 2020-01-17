@@ -5,12 +5,14 @@ import { AttributeRoutingModule } from './attributes-routing.module';
 import { ListComponent } from './list/list.component';
 import { UpsertComponent } from './upsert/upsert.component';
 import { DetailComponent } from './detail/detail.component';
+import { RelsComponent } from './rels/rels.component';
 @NgModule({
-  declarations: [ListComponent, DetailComponent, UpsertComponent],
+  declarations: [ListComponent, DetailComponent, RelsComponent, UpsertComponent],
   imports: [
     CommonModule,
     FormsModule,
     AttributeRoutingModule
   ]
 })
-export class AttributeModule { }
+export class AttributeModule {
+}
