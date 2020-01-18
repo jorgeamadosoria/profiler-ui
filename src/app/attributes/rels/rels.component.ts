@@ -11,8 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class RelsComponent implements OnInit {
   private path = 'controllers/attributes/rel';
-  rels = Array<AttributeRel>();
-  attribute: Attribute;
+  model = { attribute: new Attribute({}), rels: Array<AttributeRel>() };
   types = AttributeType;
   constructor(
     private service: Service,
@@ -24,19 +23,20 @@ export class RelsComponent implements OnInit {
 
     this.actRoute.params.subscribe((routeParams: { id: number; }) => {
       if (routeParams.id) {
+          this.model.rels = Array<AttributeRel>();
           this.service.get(this.path, routeParams.id)
           .subscribe((data: []) => data.forEach(e => {
-            this.rels.push(new AttributeRel(e));
-            this.attribute = this.rels[0].from;
-            console.log(this.rels);
+            this.model.rels.push(new AttributeRel(e));
+            this.model.attribute = this.model.rels[0].from;
+            console.log(' rels ' + this.model.rels);
           }));
         }
       });
   }
 
   onSubmit() {
-    console.log(this.rels);
-    this.service.upsertList(this.path, this.rels)
+    console.log(this.model.rels);
+    this.service.upsertList(this.path, this.model.rels)
     .subscribe(() => this.route.navigate(['attributes/list']));
   }
 

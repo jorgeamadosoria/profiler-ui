@@ -1,19 +1,11 @@
-<p>Manage Rel - {{attribute.name}}</p>
+<p>Manage Rel - {{model.attribute.name}}</p>
 <form (ngSubmit)="onSubmit()" #form="ngForm">
-          <div *ngFor='let rel of rels'>
-            <input type="text" class="form-control" id="name" 
+          <div *ngFor='let rel of model.rels;let i = index'>
+            <input type="text" class="form-control"
             readonly
-               required
-               [(ngModel)]="rel.name" name="name"
-               #name="ngModel">
-            <select id="level" name="level" [(ngModel)]='rel.level' #level="ngModel">
-                <option>5</option>
-                <option>4</option>
-                <option>3</option>
-                <option>2</option>
-                <option>1</option>
-                <option>0</option>
-            </select> 
+               [(ngModel)]="rel.to.name" name="name{{i}}">
+            <input  type="number" class="form-control" 
+            name="level{{i}}" [(ngModel)]='rel.level'>
           </div>
       <button type="button" class="btn btn-success" (click)="onSubmit()" [disabled]="!form.valid">Submit</button>
     </form>

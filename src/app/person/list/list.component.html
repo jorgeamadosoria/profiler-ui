@@ -1,0 +1,23 @@
+<h1>Clients</h1>
+<hr>
+<a routerLink="../upsert">Add</a>
+<table>
+<thead><tr>
+    <th>Id</th>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Actions</th>
+</tr>
+    
+</thead>
+<tbody *ngIf="items">
+    <tr *ngFor="let item of items">
+        <td>{{item.id}}</td>
+        <td>{{item.name}}</td>
+        <td>{{item.description}}</td>
+        <td>
+            <a href="#" [routerLink]="['../detail',item.id]">Detail</a>&nbsp;&nbsp;<a [routerLink]="['../upsert',item.id]">Edit</a>&nbsp;&nbsp;<a href="#" (click)="onDelete(item.id);false">Delete</a>
+        </td>
+    </tr>
+</tbody>
+</table>

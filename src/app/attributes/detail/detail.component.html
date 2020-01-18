@@ -1,5 +1,7 @@
-<p>{{model.name}}</p>
-<p>{{model.description}}</p>
-<p>{{model.type}}</p>
-<p>{{rels | json}}</p>
+<p>{{model.attribute.name}}</p>
+<p>{{model.attribute.description}}</p>
+<p>{{model.attribute.type}}</p>
+<div *ngFor="let rel of model.rels">
+    <div>{{rel.to.name}} - {{rel.level}}</div>
+</div>
 <a routerLink="../../list">Back to list</a>
