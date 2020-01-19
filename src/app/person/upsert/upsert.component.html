@@ -1,14 +1,26 @@
 <p>Create / Edit</p>
 <form (ngSubmit)="onSubmit()" #form="ngForm">
+  <input type="text" id="id"
+               disabled
+               [(ngModel)]="model.id" name="id" placeholder="id"
+               #id="ngModel">
     <input type="text" id="id"
                disabled
                [(ngModel)]="model.id" name="id" placeholder="id"
                #id="ngModel">
     <div class="form-group">
-        <input type="text" class="form-control" id="name" placeholder="name"
-               required
-               [(ngModel)]="model.name" name="name"
-               #name="ngModel">
+        <input type="text" class="form-control" id="firstName" 
+              placeholder="firstName"
+              required
+              [(ngModel)]="model.firstName" name="firstName"
+              #firstName="ngModel">
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" id="lastName" 
+              placeholder="lastName"
+              required
+              [(ngModel)]="model.lastName" name="lastName"
+              #lastName="ngModel">
       </div>
       <div class="form-group">
         <input type="text" class="form-control" id="description" placeholder="description"
@@ -16,11 +28,31 @@
                [(ngModel)]="model.description" name="description"
                #description="ngModel">
       </div>
+      
       <div class="form-group">
-        <input type="text" class="form-control" id="logo" placeholder="logo"
-               required
-               [(ngModel)]="model.logo" name="logo"
-               #logo="ngModel">
+        <input type="text" class="form-control" id="picture" 
+        placeholder="picture"
+        required
+        [(ngModel)]="model.picture" name="picture"
+        #picture="ngModel">
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" id="location" 
+        placeholder="location"
+        required
+        [(ngModel)]="model.location" name="location"
+        #location="ngModel">
+      </div>
+      <div>
+        <select>
+          <option *ngFor="let status of statusList">{{status}}</option>
+        </select>
+      </div>
+      <div>
+        <td>{{item.profile}}</td>
+      </div>
+      <div>
+        <td>{{item.organization}}</td>
       </div>
       <button type="button" class="btn btn-success" (click)="onSubmit()" [disabled]="!form.valid">Submit</button>
       <button type="button" class="btn btn-default" (click)="onReset()">Reset</button>

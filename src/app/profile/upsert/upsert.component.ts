@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Person, PersonStatus } from 'src/app/entities/Person';
+import { ProfileAttributes } from 'src/app/entities/ProfileAttributes';
 import { Service } from 'src/app/service/service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Profile } from 'src/app/entities/Profile';
 
 @Component({
   selector: 'app-upsert',
@@ -9,9 +10,8 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./upsert.component.scss']
 })
 export class UpsertComponent implements OnInit {
-  private path = 'controllers/persons';
-  model: Person;
-  statusList = PersonStatus;
+  private path = 'controllers/profiles';
+  model: Profile;
   constructor(
     private service: Service,
     private route: Router,
@@ -20,12 +20,12 @@ export class UpsertComponent implements OnInit {
 
   ngOnInit() {
     console.log(this.route);
-    this.model = new Person({});
+    this.model = new Profile({});
     this.actRoute.params.subscribe((routeParams: { id: number; }) => {
     //  console.log(routeParams.id);
       if (routeParams.id) {
           this.service.get(this.path, routeParams.id)
-          .subscribe((data) => this.model = new Person(data));
+          .subscribe((data) => this.model = new Profile(data));
         }
       });
   }
@@ -37,8 +37,4 @@ export class UpsertComponent implements OnInit {
   }
 
 
-  onReset() {
-    this.model = new Person({id: this.model.id});
-    // console.log('reset');
-  }
 }

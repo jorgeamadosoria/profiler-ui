@@ -6,7 +6,7 @@ export class Attribute {
     description: string;
     type: string;
     profiles: ProfileAttributes[];
-    constructor(data: any) {
+    constructor(data: any = {}) {
         this.id = data.id;
         this.name = data.name;
         this.description = data.description;

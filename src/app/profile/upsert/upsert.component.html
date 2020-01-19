@@ -1,0 +1,14 @@
+<p>Create / Edit</p>
+<form (ngSubmit)="onSubmit()" #form="ngForm">
+  <input type="text" id="id"
+               disabled
+               [(ngModel)]="model.id" name="id" placeholder="id"
+               #id="ngModel">
+      <div class="form-group">
+        <input type="text" class="form-control" id="description" placeholder="description"
+               required
+               [(ngModel)]="model.description" name="description"
+               #description="ngModel">
+      </div>
+      <button type="button" class="btn btn-success" (click)="onSubmit()" [disabled]="!form.valid">Submit</button>
+    </form>
