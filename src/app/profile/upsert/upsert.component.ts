@@ -11,7 +11,9 @@ import { Profile } from 'src/app/entities/Profile';
 })
 export class UpsertComponent implements OnInit {
   private path = 'controllers/profiles';
+  private pathAttr = 'controllers/profiles/attr';
   model: Profile;
+  attributes: Array<ProfileAttributes>();
   constructor(
     private service: Service,
     private route: Router,
@@ -22,7 +24,7 @@ export class UpsertComponent implements OnInit {
     console.log(this.route);
     this.model = new Profile({});
     this.actRoute.params.subscribe((routeParams: { id: number; }) => {
-    //  console.log(routeParams.id);
+    
       if (routeParams.id) {
           this.service.get(this.path, routeParams.id)
           .subscribe((data) => this.model = new Profile(data));
