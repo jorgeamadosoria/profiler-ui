@@ -2,17 +2,27 @@
 <form (ngSubmit)="onSubmit()" #form="ngForm">
   <input type="text" id="id"
                disabled
-               [(ngModel)]="model.id" name="id" placeholder="id"
+               [(ngModel)]="model.profile.id" name="id" placeholder="id"
                #id="ngModel">
       <div class="form-group">
         <input type="text" class="form-control" id="description" placeholder="description"
                required
-               [(ngModel)]="model.description" name="description"
+               [(ngModel)]="model.profile.description" name="description"
                #description="ngModel">
       </div>
       <div class="form-group">
-        <button click="addAttribute">Add</button>
-
+        <select id="selectedAttribute" name="selectedAttribute" class="form-control" #selectedAttribute="ngModel" [(ngModel)]="model.selectedAttribute">
+          <option *ngFor="let attr of model.attributes" [ngValue]="attr">{{attr.name}}</option>
+        </select>
+        <input  type="number" class="form-control" 
+          name="selectedLevel" #selectedLevel="ngModel" [(ngModel)]="model.selectedLevel">
+        <button type="button" (click)="addAttribute()">Add</button>
+      </div>
+      <div class="form-group">
+        <div *ngFor='let pAttr of model.profile.attributes;let i = index'>
+          <span>{{pAttr.attribute.name}}</span> - <span>{{pAttr.level}}</span>
+          <button type="button" (click)="onDeleteAttr(pAttr);false">Delete</button>
+        </div>
       </div>
       <button type="button" class="btn btn-success" (click)="onSubmit()" [disabled]="!form.valid">Submit</button>
     </form>
