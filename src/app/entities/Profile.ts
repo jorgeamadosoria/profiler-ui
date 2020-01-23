@@ -8,7 +8,7 @@ export class Profile {
     constructor(data: any = {}) {
         this.id = data.id;
         this.description = data.description;
-        this.attributes = (data.attributes)?data.attributes:new Array<ProfileAttributes>();
+        this.attributes = (data.attributes) ? data.attributes : new Array<ProfileAttributes>();
     }
 }
 
