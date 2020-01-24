@@ -1,27 +1,28 @@
-<p>Create / Edit</p>
-<form (ngSubmit)="onSubmit()" #form="ngForm">
+<div *ngIf="model">
+  <p>Create / Edit</p>
+  <form (ngSubmit)="onSubmit()" #form="ngForm">
     <input type="text" id="id"
                disabled
-               [(ngModel)]="model.id" name="id" placeholder="id"
+               [(ngModel)]="model.person.id" name="id" placeholder="id"
                #id="ngModel">
     <div class="form-group">
         <input type="text" class="form-control" id="firstName" 
               placeholder="firstName"
               required
-              [(ngModel)]="model.firstName" name="firstName"
+              [(ngModel)]="model.person.firstName" name="firstName"
               #firstName="ngModel">
       </div>
       <div class="form-group">
         <input type="text" class="form-control" id="lastName" 
               placeholder="lastName"
               required
-              [(ngModel)]="model.lastName" name="lastName"
+              [(ngModel)]="model.person.lastName" name="lastName"
               #lastName="ngModel">
       </div>
       <div class="form-group">
         <input type="text" class="form-control" id="description" placeholder="description"
                required
-               [(ngModel)]="model.description" name="description"
+               [(ngModel)]="model.person.description" name="description"
                #description="ngModel">
       </div>
       
@@ -29,29 +30,41 @@
         <input type="text" class="form-control" id="picture" 
         placeholder="picture"
         required
-        [(ngModel)]="model.picture" name="picture"
+        [(ngModel)]="model.person.picture" name="picture"
         #picture="ngModel">
       </div>
       <div class="form-group">
         <input type="text" class="form-control" id="location" 
         placeholder="location"
         required
-        [(ngModel)]="model.location" name="location"
+        [(ngModel)]="model.person.location" name="location"
         #location="ngModel">
       </div>
       <div>
-        <select id="status" name="model.status" class="form-control" #status="ngModel" [(ngModel)]="model.status">
+        <select id="status" name="model.status" class="form-control" #status="ngModel" [(ngModel)]="model.person.status">
           <option *ngFor="let status of statusList">{{status}}</option>
         </select>
       </div>
       <div>
-        <select id="organization" name="organization" class="form-control" #organization="ngModel" [(ngModel)]="model.organization">
-          <option *ngFor="let organization of organizations" [ngValue]="organization">{{organization.name}}</option>
+        <select id="organization" name="organization" class="form-control" #organization="ngModel" [(ngModel)]="model.person.organization">
+          <option *ngFor="let organization of organizations" [ngValue]="model.person.organization">{{organization.name}}</option>
         </select>
       </div>
-      <div>
-        <td>{{model.profile}}</td>
+      <div class="form-group">
+        <select id="selectedAttribute" name="selectedAttribute" class="form-control" #selectedAttribute="ngModel" [(ngModel)]="model.selectedAttribute">
+          <option *ngFor="let attr of model.attributes" [ngValue]="attr">{{attr.name}}</option>
+        </select>
+        <input  type="number" class="form-control" 
+          name="selectedLevel" #selectedLevel="ngModel" [(ngModel)]="model.selectedLevel">
+        <button type="button" (click)="addAttribute()">Add</button>
+      </div>
+      <div class="form-group">
+        <div *ngFor='let pAttr of model.person.profile.attributes'>
+          <span>{{pAttr.attribute.name}}</span> - <span>{{pAttr.level}}</span>
+          <button type="button" (click)="onDeleteAttr(pAttr);false">Delete</button>
+        </div>
       </div>
       <a routerLink="../../list">Back to list</a>
       <button type="button" class="btn btn-success" (click)="onSubmit()" [disabled]="!form.valid">Submit</button>
     </form>
+</div>

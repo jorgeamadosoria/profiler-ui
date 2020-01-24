@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Service } from 'src/app/service/service';
 import { RouterModule, Routes, ActivatedRoute } from '@angular/router';
+import { Profile } from 'src/app/entities/Profile';
 
 @Component({
   selector: 'app-list',
@@ -9,7 +10,7 @@ import { RouterModule, Routes, ActivatedRoute } from '@angular/router';
 })
 export class ListComponent implements OnInit {
   private path = 'controllers/profiles';
-  items: any;
+  items: Array<Profile>;
 
   constructor(
     private service: Service
@@ -17,6 +18,7 @@ export class ListComponent implements OnInit {
 
   listCallback(data: any) {
       this.items = data;
+      this.items = this.items.filter(d => d.description != null);
       console.log(this.items);
   }
 

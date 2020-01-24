@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Service } from 'src/app/service/service';
-import { Organization } from 'src/app/entities/Organization';
 import { Person } from 'src/app/entities/Person';
 
 @Component({

@@ -1,4 +1,5 @@
-<p>Create / Edit</p>
+<div *ngIf="model">
+  <p>Create / Edit</p>
 <form (ngSubmit)="onSubmit()" #form="ngForm">
     <input type="text" id="id"
                disabled
@@ -24,6 +25,4 @@
       <button type="button" class="btn btn-success" (click)="onSubmit()" [disabled]="!form.valid">Submit</button>
       <button type="button" class="btn btn-default" (click)="onReset()">Reset</button>
     </form>
-    <div>
-      
-    </div>
+</div>

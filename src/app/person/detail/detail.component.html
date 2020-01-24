@@ -1,11 +1,15 @@
-<img class="logo" [src]="model.picture">
-<p>{{model.description}}</p>
-<p>{{model.firstName}}</p>
-<p>{{model.lastName}}</p>
-<p>{{model.description}}</p>
-<p>{{model.location}}</p>
-<p>{{model.status}}</p>
-<p>{{model.profile}}</p>
-<p>{{model.organization.name}}</p>
-    
-<a routerLink="../../list">Back to list</a>
+<div *ngIf="model">
+    <img class="logo" [src]="model.picture">
+    <p>{{model.description}}</p>
+    <p>{{model.firstName}}</p>
+    <p>{{model.lastName}}</p>
+    <p>{{model.location}}</p>
+    <p>{{model.status}}</p>
+    <p>{{model.organization.name}}</p>
+    <div class="form-group">
+        <div *ngFor='let pAttr of model.profile.attributes'>
+        <span>{{pAttr.attribute.name}}</span> - <span>{{pAttr.level}}</span>
+        </div>
+    </div>
+    <a routerLink="../../list">Back to list</a>
+</div>

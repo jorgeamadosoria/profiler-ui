@@ -1,14 +1,12 @@
-<p>Manage Rel - {{model.attribute.name}}</p>
-<form (ngSubmit)="onSubmit()" #form="ngForm">
-          <div *ngFor='let rel of model.rels;let i = index'>
-            <input type="text" class="form-control"
-            readonly
-               [(ngModel)]="rel.to.name" name="name{{i}}">
-            <input  type="number" class="form-control" 
-            name="level{{i}}" [(ngModel)]='rel.level'>
-          </div>
-      <button type="button" class="btn btn-success" (click)="onSubmit()" [disabled]="!form.valid">Submit</button>
-    </form>
-    <div>
-      
-    </div>
+<div *ngIf="model">
+  <p>Manage Rel - {{model.attribute.name}}</p>
+  <form (ngSubmit)="onSubmit()" #form="ngForm">
+      <div *ngFor='let rel of model.rels;let i = index'>
+        <input type="text" class="form-control"
+        readonly
+           [(ngModel)]="rel.to.name" name="name{{i}}">
+        <input  type="number" class="form-control" name="level{{i}}" [(ngModel)]='rel.level'>
+      </div>
+    <button type="button" class="btn btn-success" (click)="onSubmit()" [disabled]="!form.valid">Submit</button>
+  </form>
+</div>

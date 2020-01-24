@@ -25,18 +25,28 @@ export class UpsertComponent implements OnInit {
     console.log(this.route);
     this.model = new ProfileModel();
     this.model.profile = new Profile({});
+    // get Attributes
     this.service.list(this.pathAttr).subscribe((data: Array<Attribute>) => {
-      this.model.attributes = data;
-      this.model.selectedAttribute = this.model.attributes[0];
-      this.model.selectedLevel = 1;
-    });
-    this.actRoute.params.subscribe((routeParams: { id: number; }) => {
 
-      if (routeParams.id) {
-          this.service.get(this.path, routeParams.id)
-          .subscribe((data) => this.model.profile = new Profile(data));
-        }
-      });
+      this.model.attributes = data;
+      // get Profile
+      this.actRoute.params.subscribe((routeParams: { id: number; }) => {
+
+          if (routeParams.id) {
+            this.service.get(this.path, routeParams.id)
+            .subscribe((data) => {
+                  this.model.profile = new Profile(data);
+                  // filter attr list to show only the unassigned attrs
+                  this.model.attributes = this.model.attributes.filter(d => !this.model.profile.attributes.find(pAttr => pAttr.attribute.id == d.id));
+                  this.model.selectedAttribute = this.model.attributes[0];
+                  this.model.selectedLevel = 1;
+              });
+          }
+        });
+
+      
+    });
+    
   }
 
   onSubmit() {

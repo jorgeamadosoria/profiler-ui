@@ -1,5 +1,6 @@
 import { Organization } from './Organization';
 import { Profile } from './Profile';
+import { Attribute } from './Attribute';
 
 export class Person {
     id?: number;
@@ -19,20 +20,24 @@ export class Person {
         this.location = data.location;
         this.picture = data.picture;
         this.status = data.status;
-        this.profile = data.profile;
+        this.profile = data.profile ? data.profile : new Profile({});
         this.organization = data.organization ? data.organization : new Organization();
     }
 }
 
+
 export class PersonModel {
     person: Person;
-    selectedOrganization: Organization;
-    organizations: Array<Organization>;
+    selectedAttribute: Attribute;
+    selectedLevel: number;
+    attributes: Array<Attribute>;
     constructor(data: any = {}) {
-        this.person = data.person;
-        this.selectedOrganization = data.selectedOrganization;
-        this.organizations = data.organizations;
+        this.person = data.person ? data.person : new Person({});
+        this.selectedAttribute = data.selectedAttribute;
+        this.attributes = data.attributes;
+        this.selectedLevel = data.selectedLevel;
     }
 }
+
 
 export const PersonStatus = ['ASSIGNED', 'AVAILABLE'];

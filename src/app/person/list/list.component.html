@@ -1,32 +1,35 @@
-<h1>People</h1>
-<hr>
-<a routerLink="../upsert">Add</a>
-<table>
-<thead><tr>
-    <th>Id</th>
-    <th>First Name</th>
-    <th>Last Name</th>
-    <th>Description</th>
-    <th>Location</th>
-    <th>Status</th>
-    <th>Profile</th>
-    <th>Organization</th>
-    <th>Actions</th>
-</tr>
-</thead>
-<tbody *ngIf="items">
-    <tr *ngFor="let item of items">
-            <td>{{item.id}}</td>
-            <td>{{item.firstName}}</td>
-            <td>{{item.lastName}}</td>
-            <td>{{item.description}}</td>
-            <td>{{item.location}}</td>
-            <td>{{item.status}}</td>
-            <td>{{item.profile}}</td>
-            <td>{{item.organization.name}}</td>
-        <td>
-            <a href="#" [routerLink]="['../detail',item.id]">Detail</a>&nbsp;&nbsp;<a [routerLink]="['../upsert',item.id]">Edit</a>&nbsp;&nbsp;<a href="#" (click)="onDelete(item.id);false">Delete</a>
-        </td>
+<div *ngIf="items">
+    <h1>People</h1>
+    <hr>
+    <a routerLink="../upsert">Add</a>
+    <table>
+    <thead><tr>
+        <th>Id</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Description</th>
+        <th>Location</th>
+        <th>Status</th>
+        <th>Organization</th>
+        <th>Actions</th>
     </tr>
-</tbody>
-</table>
+    </thead>
+    <tbody *ngIf="items">
+        <tr *ngFor="let item of items">
+                <td>{{item.id}}</td>
+                <td>{{item.firstName}}</td>
+                <td>{{item.lastName}}</td>
+                <td>{{item.description}}</td>
+                <td>{{item.location}}</td>
+                <td>{{item.status}}</td>
+                <td>{{item.organization.name}}</td>
+            <td>
+                <a href="#" [routerLink]="['../detail',item.id]">Kudos</a>&nbsp;&nbsp;
+                <a href="#" [routerLink]="['../detail',item.id]">Detail</a>&nbsp;&nbsp;
+                <a [routerLink]="['../upsert',item.id]">Edit</a>&nbsp;&nbsp;
+                <a href="#" (click)="onDelete(item.id);false">Delete</a>
+            </td>
+        </tr>
+    </tbody>
+    </table>
+</div>

@@ -1,4 +1,6 @@
-<img class="logo" [src]="model.logo">
-<p>{{model.name}}</p>
-<p>{{model.description}}</p>
-<a routerLink="../../list">Back to list</a>
+<div *ngIf="model">
+    <img class="logo" [src]="model.logo">
+    <p>{{model.name}}</p>
+    <p>{{model.description}}</p>
+    <a routerLink="../../list">Back to list</a>
+</div>
