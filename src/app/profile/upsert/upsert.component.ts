@@ -25,13 +25,13 @@ export class UpsertComponent implements OnInit {
     console.log(this.route);
     this.model = new ProfileModel();
     this.model.profile = new Profile({});
-    this.service.list(this.pathAttr).subscribe((data:Array<Attribute>) => {
+    this.service.list(this.pathAttr).subscribe((data: Array<Attribute>) => {
       this.model.attributes = data;
       this.model.selectedAttribute = this.model.attributes[0];
-      this.model.selectedLevel=1;
+      this.model.selectedLevel = 1;
     });
     this.actRoute.params.subscribe((routeParams: { id: number; }) => {
-    
+
       if (routeParams.id) {
           this.service.get(this.path, routeParams.id)
           .subscribe((data) => this.model.profile = new Profile(data));
@@ -40,33 +40,26 @@ export class UpsertComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log("on submit");
-    console.log(this.model.profile);
     this.service.upsert(this.path, this.model.profile).subscribe(data => this.route.navigate(['profile/list']));
     //  console.log('submitted');
   }
 
-  onDeleteAttr(data:ProfileAttributes){
-    //remove attribute from profileAttribute list
-    console.log("before delete attr")
+  onDeleteAttr(data: ProfileAttributes) {
+    // remove attribute from profileAttribute list
     console.log(JSON.stringify(this.model.profile.attributes));
-    this.model.profile.attributes.splice(this.model.profile.attributes.indexOf(data),1);
-    console.log("after delete attr")
-    console.log(JSON.stringify(this.model.profile.attributes));
-    //put attribute back in list
+    this.model.profile.attributes.splice(this.model.profile.attributes.indexOf(data), 1);
+    // put attribute back in list
     this.model.attributes.push(data.attribute);
   }
 
-  addAttribute(){
-    console.log("Add Attribute");
+  addAttribute() {
     console.log(JSON.stringify(this.model.selectedAttribute));
     this.model.profile.attributes.push(new ProfileAttributes({
-      attribute:new Attribute(this.model.selectedAttribute), 
-      level:this.model.selectedLevel
+      attribute: new Attribute(this.model.selectedAttribute),
+      level: this.model.selectedLevel
     }));
-    this.model.profile.attributes.forEach(e => console.log(e));
     this.model.selectedLevel = 1;
-    this.model.attributes.splice(this.model.attributes.indexOf(this.model.selectedAttribute),1);
+    this.model.attributes.splice(this.model.attributes.indexOf(this.model.selectedAttribute), 1);
     this.model.selectedAttribute = this.model.attributes[0];
   }
 

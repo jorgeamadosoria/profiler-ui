@@ -20,7 +20,18 @@ export class Person {
         this.picture = data.picture;
         this.status = data.status;
         this.profile = data.profile;
-        this.organization = data.organization;
+        this.organization = data.organization ? data.organization : new Organization();
+    }
+}
+
+export class PersonModel {
+    person: Person;
+    selectedOrganization: Organization;
+    organizations: Array<Organization>;
+    constructor(data: any = {}) {
+        this.person = data.person;
+        this.selectedOrganization = data.selectedOrganization;
+        this.organizations = data.organizations;
     }
 }
 

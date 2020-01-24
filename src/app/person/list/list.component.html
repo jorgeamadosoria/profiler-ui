@@ -23,7 +23,7 @@
             <td>{{item.location}}</td>
             <td>{{item.status}}</td>
             <td>{{item.profile}}</td>
-            <td>{{item.organization}}</td>
+            <td>{{item.organization.name}}</td>
         <td>
             <a href="#" [routerLink]="['../detail',item.id]">Detail</a>&nbsp;&nbsp;<a [routerLink]="['../upsert',item.id]">Edit</a>&nbsp;&nbsp;<a href="#" (click)="onDelete(item.id);false">Delete</a>
         </td>

@@ -1,9 +1,5 @@
 <p>Create / Edit</p>
 <form (ngSubmit)="onSubmit()" #form="ngForm">
-  <input type="text" id="id"
-               disabled
-               [(ngModel)]="model.id" name="id" placeholder="id"
-               #id="ngModel">
     <input type="text" id="id"
                disabled
                [(ngModel)]="model.id" name="id" placeholder="id"
@@ -44,16 +40,18 @@
         #location="ngModel">
       </div>
       <div>
-        <select>
+        <select id="status" name="model.status" class="form-control" #status="ngModel" [(ngModel)]="model.status">
           <option *ngFor="let status of statusList">{{status}}</option>
         </select>
       </div>
       <div>
-        <td>{{item.profile}}</td>
+        <select id="organization" name="organization" class="form-control" #organization="ngModel" [(ngModel)]="model.organization">
+          <option *ngFor="let organization of organizations" [ngValue]="organization">{{organization.name}}</option>
+        </select>
       </div>
       <div>
-        <td>{{item.organization}}</td>
+        <td>{{model.profile}}</td>
       </div>
+      <a routerLink="../../list">Back to list</a>
       <button type="button" class="btn btn-success" (click)="onSubmit()" [disabled]="!form.valid">Submit</button>
-      <button type="button" class="btn btn-default" (click)="onReset()">Reset</button>
     </form>

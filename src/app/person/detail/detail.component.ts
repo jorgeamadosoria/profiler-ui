@@ -10,7 +10,7 @@ import { Person } from 'src/app/entities/Person';
   styleUrls: ['./detail.component.scss']
 })
 export class DetailComponent implements OnInit {
-  private path = 'controllers/organizations';
+  private path = 'controllers/persons';
   model: Person;
   constructor(
     private service: Service,

@@ -22,5 +22,5 @@ export class ProfileModel {
         this.selectedAttribute = data.selectedAttribute;
         this.attributes = data.attributes;
         this.selectedLevel = data.selectedLevel;
-    }    
+    }
 }
