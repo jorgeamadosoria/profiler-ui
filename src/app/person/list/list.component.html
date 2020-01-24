@@ -24,7 +24,7 @@
                 <td>{{item.status}}</td>
                 <td>{{item.organization.name}}</td>
             <td>
-                <a href="#" [routerLink]="['../detail',item.id]">Kudos</a>&nbsp;&nbsp;
+                <a href="#" (click)="open(item);false">Kudos</a>&nbsp;&nbsp;
                 <a href="#" [routerLink]="['../detail',item.id]">Detail</a>&nbsp;&nbsp;
                 <a [routerLink]="['../upsert',item.id]">Edit</a>&nbsp;&nbsp;
                 <a href="#" (click)="onDelete(item.id);false">Delete</a>

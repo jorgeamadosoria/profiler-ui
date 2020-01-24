@@ -6,17 +6,24 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LayoutModule } from './layout/layout.module';
 import { AuthModule } from './auth/auth.module';
+import { KudosComponent } from './kudos/kudos.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    KudosComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
     LayoutModule,
-    AuthModule
+    AuthModule,
+    NgbModule
+  ],
+  entryComponents:[
+    KudosComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
