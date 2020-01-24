@@ -1,3 +1,7 @@
-<input type="text" name="login-username" id="login-username">
-<input type="password" name="login-pw" id="login-pw">
+<div *ngIf="items">
+<tr *ngFor="let item of items">
+    <td>{{item.id}}</td>
+    <td>{{item.firstName}}</td>
+    <td>{{item.lastName}}</td>
 <button type="submit" (click)="onSubmit()">Login</button>
+</div>
