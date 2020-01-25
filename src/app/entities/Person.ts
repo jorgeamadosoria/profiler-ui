@@ -25,6 +25,11 @@ export class Person {
     }
 }
 
+export class Login {
+    logged: Person;
+    users: Array<Person>;
+}
+
 
 export class PersonModel {
     person: Person;

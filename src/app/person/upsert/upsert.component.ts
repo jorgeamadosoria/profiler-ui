@@ -26,13 +26,11 @@ export class UpsertComponent implements OnInit {
 
   ngOnInit() {
     this.model = new PersonModel({});
-    
-    
 
 
 
     this.actRoute.params.subscribe((routeParams: { id: number; }) => {
-        
+
       this.service.list(this.pathAttr).subscribe((data: Array<Attribute>) => {
         this.model.attributes = data;
 

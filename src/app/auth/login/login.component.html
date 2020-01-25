@@ -1,7 +1,8 @@
-<div *ngIf="items">
-<tr *ngFor="let item of items">
-    <td>{{item.id}}</td>
-    <td>{{item.firstName}}</td>
-    <td>{{item.lastName}}</td>
+<div *ngIf="model">
+    <select id="logged" name="logged" 
+    #logged="ngModel" 
+    [(ngModel)]="model.logged">
+        <option *ngFor="let user of model.users" [ngValue]="user">{{user.firstName}} {{user.lastName}}</option>
+      </select>    
 <button type="submit" (click)="onSubmit()">Login</button>
 </div>
