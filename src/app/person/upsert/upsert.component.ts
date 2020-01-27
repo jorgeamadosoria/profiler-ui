@@ -37,11 +37,12 @@ export class UpsertComponent implements OnInit {
         if (routeParams.id) {
             // get person
             this.service.get(this.path, routeParams.id)
-            .subscribe((data) => {
-              this.model.person = new Person(data);
+            .subscribe((data2) => {
+              this.model.person = new Person(data2);
               console.log(this.model.person.profile.attributes);
               // filter attr to only show unassigned ones
-              this.model.attributes = this.model.attributes.filter(d => !this.model.person.profile.attributes.find(pAttr => pAttr.attribute.id == d.id));
+              this.model.attributes = this.model.attributes
+              .filter(d => !this.model.person.profile.attributes.find(pAttr => pAttr.attribute.id === d.id));
               this.model.selectedAttribute = this.model.attributes[0];
               this.model.selectedLevel = 1;
             });
@@ -53,8 +54,7 @@ export class UpsertComponent implements OnInit {
           }
         });
 
-        console.log(this.model);
-        this.service.list(this.pathOrgs).subscribe((data: Array<Organization>) => {
+      this.service.list(this.pathOrgs).subscribe((data: Array<Organization>) => {
           this.organizations = data;
           // default values for the /add operation
           if (!routeParams.id) {
@@ -71,8 +71,6 @@ export class UpsertComponent implements OnInit {
 
   onDeleteAttr(data: ProfileAttributes) {
     // remove attribute from profileAttribute list
-    console.log('data ' + JSON.stringify(data));
-    console.log(JSON.stringify(this.model.person.profile.attributes));
     this.model.person.profile.attributes.splice(this.model.person.profile.attributes.indexOf(data), 1);
     console.log(JSON.stringify(this.model.person.profile.attributes));
     // put attribute back in list

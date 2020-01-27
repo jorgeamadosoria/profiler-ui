@@ -4,6 +4,8 @@ import { Service } from 'src/app/service/service';
 import { Person } from 'src/app/entities/Person';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { KudosComponent } from 'src/app/kudos/kudos.component';
+import { ProfileAttributes } from 'src/app/entities/ProfileAttributes';
+import { Endorsement } from 'src/app/entities/Endorsement';
 
 @Component({
   selector: 'app-detail',
@@ -12,14 +14,13 @@ import { KudosComponent } from 'src/app/kudos/kudos.component';
 })
 export class DetailComponent implements OnInit {
   private path = 'controllers/persons';
+  private pathEnd = 'controllers/endorsements';
   model: Person;
   constructor(
     private service: Service,
-    private modalService: NgbModal,
     private actRoute: ActivatedRoute) { }
 
   detailCallback(data: any) {
-      console.log(data);
       this.model = new Person(data);
   }
 
@@ -30,8 +31,12 @@ export class DetailComponent implements OnInit {
       });
   }
 
-  open(item) {
-    const modalRef = this.modalService.open(KudosComponent);
-    modalRef.componentInstance.my_modal_content = item;
+  endorse(attr: ProfileAttributes) {
+    const endorsement = new Endorsement({
+        person: this.service.loggedUser,
+        profileAttributes: attr,
+    });
+    this.service.upsert(this.pathEnd, endorsement
+    ).subscribe(data => attr.endorsed = true);
   }
 }

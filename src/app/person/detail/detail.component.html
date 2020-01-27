@@ -9,8 +9,10 @@
     <div class="form-group">
         <div *ngFor='let pAttr of model.profile.attributes'>
         <span>{{pAttr.attribute.name}}</span> - <span>{{pAttr.level}}</span>
+            <div *ngIf="!pAttr.endorsed">
+                <button (click)="endorse(pAttr)">Endorsement</button>
+            </div>
         </div>
     </div>
-    <a href="#" (click)="open(model);false">Kudos</a>&nbsp;&nbsp;
     <a routerLink="../../list">Back to list</a>
 </div>

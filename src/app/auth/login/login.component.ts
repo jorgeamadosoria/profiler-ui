@@ -18,12 +18,13 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     this.service.loggedUser = this.model.logged;
-    this.route.navigate(['client']);
+    this.route.navigate(['/person']);
   }
 
 
   listCallback(data: any) {
     this.model.users = data;
+    this.model.logged = this.model.users[0];
 }
 
 ngOnInit() {

@@ -1,13 +1,14 @@
 <div class="modal-header">
-    <h4 class="modal-title">Optional message</h4>
+    <h4 class="modal-title">Feedback message</h4>
     <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
-  <div class="modal-body">
-    <p> {{my_modal_content | json}}</p>
-    <textarea id="message" name="message"></textarea>
-  </div>
+    <p> {{model | json}}</p>
+    <textarea id="feedback" name="feedback" #feedback="ngModel" [(ngModel)]="model.feedback"></textarea>
+    <select id="type" name="model.type" class="form-control" #type="ngModel" [(ngModel)]="model.type">
+      <option *ngFor="let type of types">{{type}}</option>
+    </select>
   <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
+    <button type="button" class="btn btn-outline-dark" (click)="activeModal.close(model)">Close</button>
   </div>

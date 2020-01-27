@@ -1,9 +1,17 @@
 <nav>
-    <a routerLink="/">Home</a>
+    <span *ngIf="service.loggedUser">
+
+    
     <a routerLink="/profile">Profiles</a>
     <a routerLink="/person">People</a>
     <a routerLink="/client">Clients</a>
     <a routerLink="/attributes">Attributes</a>
     <a routerLink="/talentscape">Talentscape</a>
     <a routerLink="/about">About</a>
+        {{ service.loggedUser.firstName}}&nbsp;&nbsp;
+        <a routerLink="/" (click)="logout()">Logout</a>
+    </span>
+    <span *ngIf="!service.loggedUser">
+        <a routerLink="/">Login</a>
+    </span>
 </nav>
