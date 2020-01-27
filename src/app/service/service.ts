@@ -19,6 +19,12 @@ export class Service {
     private http: HttpClient
   ) { }
 
+  public isLoggedUser(id:number) {
+    console.log('is Logged User');
+    console.log(id);
+    return this.loggedUser && this.loggedUser.id === id;
+  }
+
   public list(path: string) {
     return this.http.get(environment.URL + path, { headers: this.headers});
   }

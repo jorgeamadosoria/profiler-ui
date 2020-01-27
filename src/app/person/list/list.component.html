@@ -24,7 +24,8 @@
                 <td>{{item.status}}</td>
                 <td>{{item.organization.name}}</td>
             <td>
-                <a href="#" (click)="open(item);false">Feedback</a>&nbsp;&nbsp;
+                
+                <a *ngIf="!service.isLoggedUser(item.id)" href="#" (click)="open(item);false">Feedback</a>&nbsp;&nbsp;
                 <a href="#" [routerLink]="['../detail',item.id]">Detail</a>&nbsp;&nbsp;
                 <a [routerLink]="['../upsert',item.id]">Edit</a>&nbsp;&nbsp;
                 <a href="#" (click)="onDelete(item.id);false">Delete</a>

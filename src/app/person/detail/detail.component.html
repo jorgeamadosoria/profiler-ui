@@ -8,10 +8,15 @@
     <p>{{model.organization.name}}</p>
     <div class="form-group">
         <div *ngFor='let pAttr of model.profile.attributes'>
-        <span>{{pAttr.attribute.name}}</span> - <span>{{pAttr.level}}</span>
-            <div *ngIf="!pAttr.endorsed">
-                <button (click)="endorse(pAttr)">Endorsement</button>
-            </div>
+        <span>{{pAttr.attribute.name}}</span> - <span>{{pAttr.level}}</span> (<span>{{ pAttr.count}}</span>)
+        <span *ngIf="!service.isLoggedUser(model.id)">
+            <span *ngIf="!pAttr.endorser">
+                <button (click)="endorse(pAttr)">Endorse</button>
+            </span>
+            <span *ngIf="pAttr.endorser">
+                <button (click)="unendorse(pAttr)">Unendorse</button>
+            </span>
+        </span>
         </div>
     </div>
     <a routerLink="../../list">Back to list</a>
