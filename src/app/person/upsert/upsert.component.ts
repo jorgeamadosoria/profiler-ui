@@ -25,6 +25,7 @@ export class UpsertComponent implements OnInit {
     }
 
   ngOnInit() {
+    console.log(this.path);
     this.model = new PersonModel({});
 
 
@@ -90,8 +91,7 @@ export class UpsertComponent implements OnInit {
 
 
   onSubmit() {
-    console.log(this.model);
-    this.model.person.profile.description = null;
+    console.log(this.path);
     this.service.upsert(this.path, this.model.person).subscribe(data => this.route.navigate(['person/list']));
     //  console.log('submitted');
   }

@@ -34,19 +34,18 @@ export class UpsertComponent implements OnInit {
 
           if (routeParams.id) {
             this.service.get(this.path, routeParams.id)
-            .subscribe((data) => {
-                  this.model.profile = new Profile(data);
+            .subscribe((data2: any) => {
+                  this.model.profile = new Profile(data2);
                   // filter attr list to show only the unassigned attrs
-                  this.model.attributes = this.model.attributes.filter(d => !this.model.profile.attributes.find(pAttr => pAttr.attribute.id == d.id));
+                  this.model.attributes = this.model.attributes
+                  .filter(d => !this.model.profile.attributes.find(pAttr => pAttr.attribute.id === d.id));
                   this.model.selectedAttribute = this.model.attributes[0];
                   this.model.selectedLevel = 1;
               });
           }
         });
-
-      
     });
-    
+
   }
 
   onSubmit() {

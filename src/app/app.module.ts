@@ -8,6 +8,7 @@ import { LayoutModule } from './layout/layout.module';
 import { AuthModule } from './auth/auth.module';
 import { KudosComponent } from './kudos/kudos.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { LoginGuard } from './guard/login.guard';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   entryComponents: [
     KudosComponent
   ],
-  providers: [],
+  providers: [ LoginGuard ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

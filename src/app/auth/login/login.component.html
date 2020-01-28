@@ -1,8 +1,12 @@
-<div *ngIf="model">
-    <select id="logged" name="logged" 
+<div class="offset-4 col-4" *ngIf="model">
+  <div class="text-center form-group">
+  <select id="logged" name="logged" class="form-control"
     #logged="ngModel" 
     [(ngModel)]="model.logged">
         <option *ngFor="let user of model.users" [ngValue]="user">{{user.firstName}} {{user.lastName}}</option>
-      </select>    
-<button type="submit" (click)="onSubmit()">Login</button>
+      </select>  
+    </div>  
+    <div class="text-center form-group">
+      <button class="btn btn-outline-primary" type="submit" (click)="onSubmit()"><i class="fas fa-sign-in-alt"></i>&nbsp;&nbsp;Login</button>
+    </div>
 </div>

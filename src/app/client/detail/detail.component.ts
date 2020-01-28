@@ -15,7 +15,7 @@ export class DetailComponent implements OnInit {
     private service: Service,
     private actRoute: ActivatedRoute) { }
 
-  detailCallback(data:any){
+  detailCallback(data: any) {
       console.log(data);
       this.model = new Organization(data);
   }

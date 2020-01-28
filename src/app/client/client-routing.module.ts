@@ -3,14 +3,20 @@ import { Routes, RouterModule } from '@angular/router';
 import { ListComponent } from './list/list.component';
 import { UpsertComponent } from './upsert/upsert.component';
 import { DetailComponent } from './detail/detail.component';
+import { LoginGuard } from '../guard/login.guard';
 
 
 const routes: Routes = [
-  { path: '', redirectTo: 'list' },
-  { path: 'list', component: ListComponent },
-  { path: 'upsert/:id', component: UpsertComponent },
-  { path: 'upsert', component: UpsertComponent },
-  { path: 'detail/:id', component: DetailComponent },
+  { path: '', redirectTo: 'list',
+  canActivate: [LoginGuard] },
+  { path: 'list', component: ListComponent,
+  canActivate: [LoginGuard] },
+  { path: 'upsert/:id', component: UpsertComponent,
+  canActivate: [LoginGuard] },
+  { path: 'upsert', component: UpsertComponent,
+  canActivate: [LoginGuard] },
+  { path: 'detail/:id', component: DetailComponent,
+  canActivate: [LoginGuard] },
 ];
 
 @NgModule({

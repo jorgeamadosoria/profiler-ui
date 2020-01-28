@@ -7,15 +7,15 @@ import { Service } from 'src/app/service/service';
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit {
-  private path:string='controllers/attributes';
+  private path = 'controllers/attributes';
   items: any;
 
   constructor(
     private service: Service
-    
+
   ) { }
 
-  listCallback(data:any){
+  listCallback(data: any) {
       this.items = data;
       console.log(this.items);
   }
@@ -24,8 +24,8 @@ export class ListComponent implements OnInit {
     this.service.list(this.path).subscribe( data => this.listCallback(data));
   }
 
-  onDelete(id:number){
-    this.service.delete(this.path,id).subscribe(data => this.items = this.items.filter((value) => value.id != id));
+  onDelete(id: number) {
+    this.service.delete(this.path, id).subscribe(data => this.items = this.items.filter((value) => value.id !== id));
   }
 
 }

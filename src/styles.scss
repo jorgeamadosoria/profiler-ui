@@ -1,9 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
 
+.avatar {
+    max-height: 75px;
+    max-width: 75px;
+}
+
 :root {
     --black: rgb(19, 26, 35);
-    --main-bg: rgb(224, 228, 232);
+    
     --font: 'Montserrat', sans-serif;
 }
 

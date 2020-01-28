@@ -24,7 +24,7 @@ export class DetailComponent implements OnInit {
 
   ngOnInit() {
     this.actRoute.params.subscribe((routeParams: { id: number; }) => {
-          this.service.get(this.path 
+          this.service.get(this.path
           + '/' + this.service.loggedUser.id, routeParams.id)
           .subscribe((data) => this.detailCallback(data));
       });
@@ -36,12 +36,12 @@ export class DetailComponent implements OnInit {
         profileAttributes: attr,
     });
     this.service.upsert(this.pathEnd, endorsement
-    ).subscribe((data: Endorsement) => {attr.endorser = data.id;attr.count++;});
+    ).subscribe((data: Endorsement) => {attr.endorser = data.id; attr.count++; });
   }
 
   unendorse(attr: ProfileAttributes) {
 
     this.service.delete(this.pathEnd, attr.endorser
-    ).subscribe(data => {attr.endorser = null; attr.count--;});
+    ).subscribe(data => {attr.endorser = null; attr.count--; });
   }
 }
