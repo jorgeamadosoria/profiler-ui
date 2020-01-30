@@ -16,6 +16,7 @@
                 <td>{{item.description}}</td>
             
                 <td>
+                    <a href="#" [routerLink]="['../match',item.id]">Match</a>&nbsp;&nbsp;
                     <a href="#" [routerLink]="['../detail',item.id]">Detail</a>&nbsp;&nbsp;<a [routerLink]="['../upsert',item.id]">Edit</a>&nbsp;&nbsp;<a href="#" (click)="onDelete(item.id);false">Delete</a>
                 </td>
             </tr>
