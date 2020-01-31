@@ -5,8 +5,8 @@ export class Match {
     profileA : Profile;
 	profileB: Profile;
 	matchedAttributes : Array<MatchedAttribute>;
-	matchScore : number;
-	algorithmName : string;
+	matchScore: number;
+	algorithmName: string;
     constructor(data: any = {}) {
         this.profileA = data.profileA;
         this.profileB = data.profileB;

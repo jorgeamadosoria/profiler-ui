@@ -1,9 +1,14 @@
-<div *ngIf="model">
-  <p>{{model.description}}</p>
-  <div class="form-group">
-      <div *ngFor='let pAttr of model.attributes'>
-        <span>{{pAttr.attribute.name}}</span> - <span>{{pAttr.level}}</span>
+<div class="container-fluid" *ngIf="model">
+  <div class="row">
+      <div class="col-3" *ngFor='let match of model.matches'>
+        
+        <div class="text-center"><span class="h2 badge-primary badge badge-pill">{{match.matchScore}}</span></div>
+         <div class="text-center" *ngFor='let attr of match.matchedAttributes'>
+            <span class="badge badge-pill badge-light text-center">{{attr.attributeAName}} lv{{attr.levelA}}</span>
+            <span class="text-center badge-secondary badge badge-pill">{{attr.matchScore}}</span>
+            <span class="badge badge-pill badge-light text-center">{{attr.attributeBName}} lv{{attr.levelB}}</span>
+         </div>
       </div>
-    </div>
+  </div>
   <a routerLink="../../list">Back to list</a>
 </div>
