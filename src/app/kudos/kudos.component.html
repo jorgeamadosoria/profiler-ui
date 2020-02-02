@@ -4,11 +4,18 @@
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
-    <p> {{model | json}}</p>
-    <textarea id="feedback" name="feedback" #feedback="ngModel" [(ngModel)]="model.feedback"></textarea>
-    <select id="type" name="model.type" class="form-control" #type="ngModel" [(ngModel)]="model.type">
-      <option *ngFor="let type of types">{{type}}</option>
-    </select>
+  <div class="row ml-1 mr-1">
+    <div class="col-12 mt-1 mb-1">
+      <textarea id="feedback" class=" text-center form-control" name="feedback" #feedback="ngModel" [(ngModel)]="model.feedback"></textarea>
+    </div>
+    <div class="col-7 mb-1">
+    </div>
+    <div class="col-5 mb-1">
+      <select id="type" name="model.type" class="form-control" #type="ngModel" [(ngModel)]="model.type">
+        <option *ngFor="let type of types">{{type}}</option>
+      </select>
+    </div>  
+  </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-outline-dark" (click)="activeModal.close(model)">Close</button>
   </div>

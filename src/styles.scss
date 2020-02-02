@@ -1,6 +1,31 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
 
+.w-action {
+    width:15%;
+}
+
+.add-icon-div {
+    position: relative;
+    left: 30px;
+    top: 25px;
+    padding: 2px;
+    display: inline-block;
+    z-index: 1;
+    background: white;
+}
+
+.add-icon {
+    position: relative;
+    top: 10px;
+    padding: 4px;
+}
+
+.table-border {
+    border: 1px solid #dee2e6;
+    border-radius: 15px;
+}
+
 .avatar {
     max-height: 75px;
     max-width: 75px;

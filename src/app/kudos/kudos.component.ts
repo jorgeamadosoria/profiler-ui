@@ -18,5 +18,6 @@ export class KudosComponent implements OnInit {
     public activeModal: NgbActiveModal) {}
 
   ngOnInit() {
+    this.model.type = this.types[0];
   }
 }

@@ -4,7 +4,9 @@ import { Match } from './Match';
 
 export class Matches {
     matches: Array<Match>;
-    constructor(data: Array<Match>) {
+    selectedAlgorithm: string;
+    constructor(data: Array<Match>, selectedAlgorithm: string) {
         this.matches = data;
+        this.selectedAlgorithm = selectedAlgorithm;
     }
 }

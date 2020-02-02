@@ -1,25 +1,28 @@
-<div *ngIf="model">
-    <h1>Clients</h1>
-    <hr>
-    <a routerLink="../upsert">Add</a>
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody *ngIf="items">
-            <tr *ngFor="let item of items">
-                <td>{{item.id}}</td>
-                <td>{{item.name}}</td>
-                <td>{{item.description}}</td>
-                <td>
-                    <a href="#" [routerLink]="['../detail',item.id]">Detail</a>&nbsp;&nbsp;<a [routerLink]="['../upsert',item.id]">Edit</a>&nbsp;&nbsp;<a href="#" (click)="onDelete(item.id);false">Delete</a>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+<div class="container-fluid" *ngIf="items">
+    <div class="add-icon-div" >
+        <a class="d-inline-block" routerLink="../upsert"><i class="add-icon text-dark fa fa-plus-circle fa-3x"></i></a>
+        <h3 class="d-inline-block">Organizations</h3>
+    </div>
+    <div class="table-border pt-5 p-2">
+        <table class="table">
+            <thead class="thead-light"><tr>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th class="w-action">Actions</th>
+                </tr>
+            </thead>
+            <tbody *ngIf="items">
+                <tr *ngFor="let item of items">
+                    <td>{{item.name}}</td>
+                    <td>{{item.description}}</td>
+                    <td>
+                        <a href="#" [routerLink]="['../detail',item.id]"><i class="text-dark fas fa-info-circle"></i></a>&nbsp;&nbsp;
+                        <a [routerLink]="['../upsert',item.id]"><i class="text-dark fas fa-edit"></i></a>&nbsp;&nbsp;
+                        <a href="#" (click)="onDelete(item.id);false"><i class="text-dark fas fa-trash-alt"></i></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
