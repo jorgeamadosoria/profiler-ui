@@ -20,8 +20,6 @@ export class Service {
   ) { }
 
   public isLoggedUser(id: number) {
-    console.log('is Logged User');
-    console.log(id);
     return this.loggedUser && this.loggedUser.id === id;
   }
 

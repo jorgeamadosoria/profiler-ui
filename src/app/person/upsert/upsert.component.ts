@@ -25,10 +25,7 @@ export class UpsertComponent implements OnInit {
     }
 
   ngOnInit() {
-    console.log(this.path);
     this.model = new PersonModel({});
-
-
 
     this.actRoute.params.subscribe((routeParams: { id: number; }) => {
 
@@ -37,8 +34,10 @@ export class UpsertComponent implements OnInit {
 
         if (routeParams.id) {
             // get person
-            this.service.get(this.path, routeParams.id)
+            this.service.get(this.path + '/' + this.service.loggedUser.id, routeParams.id)
             .subscribe((data2) => {
+              console.log('data 2');
+              console.log(data2);
               this.model.person = new Person(data2);
               console.log(this.model.person.profile.attributes);
               // filter attr to only show unassigned ones
