@@ -1,9 +1,12 @@
 <div class="container-fluid" *ngIf="model">
-  <p>{{model.description}}</p>
-  <div class="form-group">
-      <div *ngFor='let pAttr of model.attributes'>
-        <span>{{pAttr.attribute.name}}</span> - <span>{{pAttr.level}}</span>
-      </div>
+  <div class="row">
+    <div class="col-12">
+        <p>{{model.description}}</p>
     </div>
-  <a routerLink="../../list">Back to list</a>
+  </div>
+  <div class="row border-primary p-1 border border-dark m-1">
+    <div class="col-4 mb-2 text-center" *ngFor='let pAttr of model.attributes'>
+      <span class="badge badge-pill badge-dark">{{pAttr.attribute.name}} lv{{pAttr.level}}</span>
+    </div>
+  </div>
 </div>

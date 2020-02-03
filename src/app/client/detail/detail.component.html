@@ -1,6 +1,11 @@
 <div class="container-fluid" *ngIf="model">
-    <img class="logo" [src]="model.logo">
-    <p>{{model.name}}</p>
-    <p>{{model.description}}</p>
-    <a routerLink="../../list">Back to list</a>
+    <div class="row">
+        <div class="col-3">
+            <img class="logo" [src]="model.logo">
+        </div>
+        <div class="col-3">
+            <p>{{model.name}}</p>
+            <p class="text-break text-justify">{{model.description}}</p>
+        </div>
+    </div>
 </div>

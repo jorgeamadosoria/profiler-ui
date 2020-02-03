@@ -1,12 +1,17 @@
 <div class="container-fluid" *ngIf="model">
-  <p>Manage Rel - {{model.attribute.name}}</p>
+  <p>{{model.attribute.name}}</p>
   <form (ngSubmit)="onSubmit()" #form="ngForm">
-      <div *ngFor='let rel of model.rels;let i = index'>
-        <input type="text" class="form-control"
-        readonly
-           [(ngModel)]="rel.to.name" name="name{{i}}">
-        <input  type="number" class="form-control" name="level{{i}}" [(ngModel)]='rel.level'>
+      <div class="row">
+        <div class="col-3 mb-2 form-group text-right" *ngFor='let rel of model.rels;let i = index'>
+          <label for="level{{i}}" class="col-form-label">{{rel.to.name}}</label>&nbsp;&nbsp;
+          <input type="text" hidden [(ngModel)]="rel.to.name" name="name{{i}}">
+          <input  type="number" min="0" max="5"  name="level{{i}}" [(ngModel)]='rel.level'>
+        </div>
       </div>
-    <button type="button" class="btn btn-success" (click)="onSubmit()" [disabled]="!form.valid">Submit</button>
+      <div class="row">
+        <div class="col-12 text-right">
+          <button type="button" class="btn btn-outline-dark" (click)="onSubmit()" [disabled]="!form.valid">Submit</button>
+        </div>
+      </div>
   </form>
 </div>
