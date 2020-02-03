@@ -1,29 +1,33 @@
 <div class="container-fluid" *ngIf="model">
-<p>Create / Edit</p>
 <form (ngSubmit)="onSubmit()" #form="ngForm">
     <input type="text" id="id"
-               disabled
+               hidden
                [(ngModel)]="model.id" name="id" placeholder="id"
                #id="ngModel">
-    <div class="form-group">
-        <input type="text" class="form-control" id="name" placeholder="name"
+    <div class="row mb-2">
+        <div class="col-5">
+          <input type="text" class="form-control" id="name" placeholder="name"
                required
                [(ngModel)]="model.name" name="name"
                #name="ngModel">
-      </div>
-      <div class="form-group">
-        <input type="text" class="form-control" id="description" placeholder="description"
-               required
-               [(ngModel)]="model.description" name="description"
-               #description="ngModel">
-      </div>
-      <div class="form-group">
-        <input type="text" class="form-control" id="logo" placeholder="logo"
+        </div>
+        <div class="col-7">
+          <input type="text" class="form-control" id="logo" placeholder="logo"
                required
                [(ngModel)]="model.logo" name="logo"
                #logo="ngModel">
+        </div>
       </div>
-      <button type="button" class="btn btn-success" (click)="onSubmit()" [disabled]="!form.valid">Submit</button>
-      <button type="button" class="btn btn-default" (click)="onReset()">Reset</button>
+      <div class="row mb-2">
+        <div class="col-12">
+          <input type="text" class="form-control" id="description" placeholder="description"
+               required
+               [(ngModel)]="model.description" name="description"
+               #description="ngModel">
+        </div>
+      </div>
+      <div class="text-right">
+        <button type="button" class="btn btn-outline-dark" (click)="onSubmit()" [disabled]="!form.valid">Submit</button>
+      </div>  
     </form>
   </div>

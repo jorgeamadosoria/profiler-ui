@@ -2,13 +2,13 @@
     <span *ngIf="service.loggedUser">
 
     
-    <a routerLink="/profile">Profiles</a>
-    <a routerLink="/person">People</a>
-    <a routerLink="/client">Clients</a>
-    <a routerLink="/attributes">Attributes</a>
-    <a routerLink="/talentscape">Talentscape</a>
-        <img class="img-fluid rounded-circle avatar" [src]="service.loggedUser.picture">{{ service.loggedUser.firstName}}&nbsp;&nbsp;
-        <a routerLink="/" (click)="logout()"><i class="fas fa-sign-out-alt"></i></a>
+    <a class="text-dark" routerLink="/profile">Profiles</a>
+    <a class="text-dark" routerLink="/person">People</a>
+    <a class="text-dark" routerLink="/client">Clients</a>
+    <a class="text-dark" routerLink="/attributes">Attributes</a>
+    <a class="text-dark" routerLink="/talentscape">Talentscape</a>
+        <img class="img-fluid rounded-circle avatar" [src]="service.loggedUser.picture">&nbsp;&nbsp;
+        <a routerLink="/" (click)="logout()"><i class="text-dark fas fa-sign-out-alt"></i></a>
         <span *ngIf="!service.loggedUser">
             <a routerLink="/"><i class="fas fa-sign-in-alt"></i></a>
         </span>

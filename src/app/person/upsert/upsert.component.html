@@ -1,70 +1,82 @@
 <div class="container-fluid" *ngIf="model">
-  <p>Create / Edit</p>
   <form (ngSubmit)="onSubmit()" #form="ngForm">
     <input type="text" id="id"
-               disabled
+               hidden
                [(ngModel)]="model.person.id" name="id" placeholder="id"
                #id="ngModel">
-    <div class="form-group">
-        <input type="text" class="form-control" id="firstName" 
-              placeholder="firstName"
-              required
-              [(ngModel)]="model.person.firstName" name="firstName"
-              #firstName="ngModel">
-      </div>
-      <div class="form-group">
-        <input type="text" class="form-control" id="lastName" 
-              placeholder="lastName"
-              required
-              [(ngModel)]="model.person.lastName" name="lastName"
-              #lastName="ngModel">
-      </div>
-      <div class="form-group">
-        <input type="text" class="form-control" id="description" placeholder="description"
+    <div class="row mb-2">
+        <div class="col-5">
+          <input type="text" class="form-control" id="firstName" 
+          placeholder="firstName"
+          required
+          [(ngModel)]="model.person.firstName" name="firstName"
+          #firstName="ngModel">
+        </div>
+        <div class="col-5">
+          <input type="text" class="form-control" id="lastName" 
+          placeholder="lastName"
+          required
+          [(ngModel)]="model.person.lastName" name="lastName"
+          #lastName="ngModel">
+        </div>
+        <div class="col-2">
+          <input type="text" class="form-control" id="location" 
+          placeholder="location"
+          required
+          [(ngModel)]="model.person.location" name="location"
+          #location="ngModel">
+        </div>
+    </div>
+      <div class="row mb-2">
+        <div class="col">
+          <input type="text" class="form-control" id="description" placeholder="description"
                required
                [(ngModel)]="model.person.description" name="description"
                #description="ngModel">
       </div>
-      
-      <div class="form-group">
+    </div>
+    <div class="row mb-2">
+      <div class="col-8">
         <input type="text" class="form-control" id="picture" 
         placeholder="picture"
         required
         [(ngModel)]="model.person.picture" name="picture"
         #picture="ngModel">
       </div>
-      <div class="form-group">
-        <input type="text" class="form-control" id="location" 
-        placeholder="location"
-        required
-        [(ngModel)]="model.person.location" name="location"
-        #location="ngModel">
-      </div>
-      <div>
-        <select id="status" name="model.status" class="form-control" #status="ngModel" [(ngModel)]="model.person.status">
+      <div class="col-2">
+        <select id="status" name="status" class="form-control" #status="ngModel" [(ngModel)]="model.person.status">
           <option *ngFor="let status of statusList">{{status}}</option>
         </select>
       </div>
-      <div>
+      <div class="col-2">
         <select id="organization" name="organization" class="form-control" #organization="ngModel" [(ngModel)]="model.person.organization">
           <option *ngFor="let organization of organizations" [ngValue]="model.person.organization">{{organization.name}}</option>
         </select>
       </div>
-      <div class="form-group">
-        <select id="selectedAttribute" name="selectedAttribute" class="form-control" #selectedAttribute="ngModel" [(ngModel)]="model.selectedAttribute">
-          <option *ngFor="let attr of model.attributes" [ngValue]="attr">{{attr.name}}</option>
-        </select>
-        <input  type="number" class="form-control" 
+      
+    </div>
+    <div class="row mb-2">
+      <div class="col-2">
+      <select id="selectedAttribute" name="selectedAttribute" class="form-control" #selectedAttribute="ngModel" [(ngModel)]="model.selectedAttribute">
+        <option *ngFor="let attr of model.attributes" [ngValue]="attr">{{attr.name}}</option>
+      </select>
+      </div>
+      <div class="col-2">
+        <input  type="number" max="5" min="1" class="form-control" 
           name="selectedLevel" #selectedLevel="ngModel" [(ngModel)]="model.selectedLevel">
-        <button type="button" (click)="addAttribute()">Add</button>
       </div>
-      <div class="form-group">
-        <div *ngFor='let pAttr of model.person.profile.attributes'>
-          <span>{{pAttr.attribute.name}}</span> - <span>{{pAttr.level}}</span>
-          <button type="button" (click)="onDeleteAttr(pAttr);false">Delete</button>
-        </div>
+      <div class="col-1">
+        <a class="text-dark add-link" type="button" (click)="addAttribute()"><i class="fa fa-2x fa-plus-circle"></i></a>
       </div>
-      <a routerLink="../../list">Back to list</a>
-      <button type="button" class="btn btn-success" (click)="onSubmit()" [disabled]="!form.valid">Submit</button>
+    </div>
+    <div class="row border-primary p-1 border border-dark m-1">
+      <div class="col-4 text-center mb-2" *ngFor='let pAttr of model.person.profile.attributes'>
+          <a class="text-dark" (click)="onDeleteAttr(pAttr);false"><i class="fa fa-window-close text-dark"></i></a>
+          lv{{pAttr.level}}&nbsp;&nbsp;{{pAttr.attribute.name}}
+      </div>
+    </div>
+    <div class="text-right">
+      <button type="button" class="btn btn-outline-dark" (click)="onSubmit()" [disabled]="!form.valid">Submit</button>
+    </div>
     </form>
 </div>
