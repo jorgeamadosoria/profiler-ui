@@ -1,23 +1,36 @@
 <div class="container-fluid" *ngIf="model">
-    <img class="logo" [src]="model.picture">
-    <p>{{model.description}}</p>
-    <p>{{model.firstName}}</p>
-    <p>{{model.lastName}}</p>
-    <p>{{model.location}}</p>
-    <p>{{model.status}}</p>
-    <p>{{model.organization.name}}</p>
-    <div class="form-group">
-        <div *ngFor='let pAttr of model.profile.attributes'>
-        <span>{{pAttr.attribute.name}}</span> - <span>{{pAttr.level}}</span> (<span>{{ pAttr.count}}</span>)
-        <span *ngIf="!service.isLoggedUser(model.id)">
-            <span *ngIf="!pAttr.endorser">
-                <button (click)="endorse(pAttr)">Endorse</button>
-            </span>
-            <span *ngIf="pAttr.endorser">
-                <button (click)="unendorse(pAttr)">Unendorse</button>
+    <div class="row">
+        <div class="col-3">
+            <img class="logo" [src]="model.picture">
+        </div>
+        <div class="col-9">
+            <p>{{model.firstName}}&nbsp;{{model.lastName}}</p>
+            <p class="text-break text-justify">{{model.description}}</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-3">
+            <span class="badge badge-secondary">{{model.location}}</span>
+        </div>
+        <div class="col-3">
+            <span class="badge badge-secondary">{{model.status}}</span>
+        </div>
+        <div class="col-3">
+            <span class="badge badge-secondary">{{model.organization.name}}</span>
+        </div>
+    </div>
+    <div class="row border-primary p-1 border border-dark m-1">
+        <div class="col-4 mb-2 text-center" *ngFor='let pAttr of model.profile.attributes'>
+        <span class="badge badge-pill badge-dark">{{pAttr.attribute.name}} lv{{pAttr.level}} <span class="badge badge-light">{{ pAttr.count}}</span>&nbsp;
+            <span *ngIf="!service.isLoggedUser(model.id)">
+                <span  class="badge badge-light" *ngIf="!pAttr.endorser">
+                    <a href="#" (click)="endorse(pAttr);false"><i class="text-dark fa fa-plus"></i></a>
+                </span>
+                <span class="badge badge-light" *ngIf="pAttr.endorser">
+                    <a href="#" (click)="unendorse(pAttr);false"><i class="text-dark fa fa-minus"></i></a>
+                </span>
             </span>
         </span>
         </div>
     </div>
-    <a routerLink="../../list">Back to list</a>
 </div>
