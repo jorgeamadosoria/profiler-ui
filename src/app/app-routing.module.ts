@@ -25,6 +25,11 @@ const routes: Routes = [
     path: 'profile',
     loadChildren: () => import('./profile/profile.module').then(m => m.ProfileModule),
     canActivate: [LoginGuard]
+  },
+  {
+    path: 'talentscape',
+    loadChildren: () => import('./talentscape/talentscape.module').then(m => m.TalentscapeModule),
+    canActivate: [LoginGuard]
   }
 ];
 

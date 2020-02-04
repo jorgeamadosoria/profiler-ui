@@ -14,9 +14,10 @@ export class LoginGuard implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+      console.log(state);
       console.log('Check Guard');
       console.log(this.service.loggedUser !== undefined && this.service.loggedUser !== null);
-      //return this.service.loggedUser !== undefined && this.service.loggedUser !== null;
+      // return this.service.loggedUser !== undefined && this.service.loggedUser !== null;
       return true;
   }
 
