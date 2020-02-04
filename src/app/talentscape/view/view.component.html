@@ -1,9 +1,21 @@
+<div *ngIf="busNumberGraph">
 Bus number
-<p>Horizontal graph of skills
-    stacked or bubble.
-    separated by levels
-</p>
-
+<ngx-charts-bar-horizontal-stacked
+  [view]="view"
+  [scheme]="colorScheme"
+  [results]="busNumberGraph"
+  [gradient]="gradient"
+  [xAxis]="showXAxis"
+  [yAxis]="showYAxis"
+  [legend]="showLegend"
+  [showXAxisLabel]="showXAxisLabel"
+  [showYAxisLabel]="showYAxisLabel"
+  [xAxisLabel]="xAxisLabel"
+  [yAxisLabel]="yAxisLabel"
+  (select)="onSelect($event)">
+</ngx-charts-bar-horizontal-stacked>
+{{busNumberGraph.series | json}}
+</div>
 Skill coverage
 <p>
 Pie Grid by skills

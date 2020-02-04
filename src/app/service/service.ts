@@ -31,6 +31,10 @@ export class Service {
     return this.http.post(environment.URL + path, entity, { headers: this.headers});
   }
 
+  public stat(path: string) {
+    return this.http.get(environment.URL + path, { headers: this.headers});
+  }
+
   public upsert(path: string, entity: any) {
     return this.http.post(environment.URL + path, entity, { headers: this.headers});
   }

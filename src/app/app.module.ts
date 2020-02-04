@@ -9,6 +9,8 @@ import { AuthModule } from './auth/auth.module';
 import { KudosComponent } from './kudos/kudos.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoginGuard } from './guard/login.guard';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { LoginGuard } from './guard/login.guard';
     LayoutModule,
     AuthModule,
     FormsModule,
-    NgbModule
+    NgbModule,
+    NgxChartsModule,
+    BrowserAnimationsModule
   ],
   entryComponents: [
     KudosComponent
