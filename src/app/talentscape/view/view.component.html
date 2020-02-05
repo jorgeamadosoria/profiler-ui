@@ -1,32 +1,32 @@
 <div *ngIf="busNumberGraph">
 Bus number
 <ngx-charts-bar-horizontal-stacked
-  [view]="view"
-  [scheme]="colorScheme"
-  [results]="busNumberGraph"
-  [gradient]="gradient"
-  [xAxis]="showXAxis"
-  [yAxis]="showYAxis"
-  [legend]="showLegend"
-  [showXAxisLabel]="showXAxisLabel"
-  [showYAxisLabel]="showYAxisLabel"
-  [xAxisLabel]="xAxisLabel"
-  [yAxisLabel]="yAxisLabel"
-  (select)="onSelect($event)">
+[view]="viewBusNumber"
+[scheme]="colorScheme"
+[results]="busNumberGraph.series"
+[gradient]="gradient"
+[yAxis]="showYAxis"
+[showYAxisLabel]="showYAxisLabel"
+[yAxisLabel]="yAxisLabel">
 </ngx-charts-bar-horizontal-stacked>
-{{busNumberGraph.series | json}}
 </div>
+<div *ngIf="skillCoverageGraph">
 Skill coverage
-<p>
-Pie Grid by skills
-</p>
-
+<ngx-charts-pie-grid
+  [view]="viewSkillCoverage"
+  [scheme]="colorScheme"
+  [results]="skillCoverageGraph">
+</ngx-charts-pie-grid>
+</div>
+<div>
 Ten most wanted skills table with attributes
 <p>
 skills most present in search profiles
 </p>
-
+</div>
+<div>
 Ten skills most likely to be learned
 <p>
     skills most closely related to existing skills
 </p>
+</div>
