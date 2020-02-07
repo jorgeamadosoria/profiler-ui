@@ -15,7 +15,7 @@ export class DetailComponent implements OnInit {
   private pathEnd = 'controllers/endorsements';
   model: Person;
   constructor(
-    private service: Service,
+    public service: Service,
     private actRoute: ActivatedRoute) { }
 
   detailCallback(data: any) {
