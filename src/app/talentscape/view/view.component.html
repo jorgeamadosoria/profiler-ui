@@ -1,32 +1,57 @@
-<div *ngIf="busNumberGraph">
-Bus number
-<ngx-charts-bar-horizontal-stacked
-[view]="viewBusNumber"
-[scheme]="colorScheme"
-[results]="busNumberGraph.series"
-[gradient]="gradient"
-[yAxis]="showYAxis"
-[showYAxisLabel]="showYAxisLabel"
-[yAxisLabel]="yAxisLabel">
-</ngx-charts-bar-horizontal-stacked>
+<div class="row" >
+    <div class="col-6" *ngIf="busNumberGraph">
+        <h4>Bus number</h4>
+        <ngx-charts-bar-horizontal-stacked
+        [view]="viewBusNumber"
+        [scheme]="colorScheme"
+        [results]="busNumberGraph.series"
+        [gradient]="gradientBusNumber"
+        [yAxis]="showYAxis"
+        [yAxisLabel]="yAxisLabel">
+        </ngx-charts-bar-horizontal-stacked>
+    </div>
+    <div class="col-6" *ngIf="skillCoverageGraph">
+        <h4>Coverage</h4>
+        <ngx-charts-tree-map
+        [view]="viewSkillCoverage"
+        [scheme]="colorScheme"
+        [results]="skillCoverageGraph"
+        [gradient]="gradientSkillCoverage"
+        [animations]="animations"
+        [labelFormatting]="labelFormatting">
+        </ngx-charts-tree-map>
+    </div>
 </div>
-<div *ngIf="skillCoverageGraph">
-Skill coverage
-<ngx-charts-pie-grid
-  [view]="viewSkillCoverage"
-  [scheme]="colorScheme"
-  [results]="skillCoverageGraph">
-</ngx-charts-pie-grid>
-</div>
-<div>
-Ten most wanted skills table with attributes
-<p>
-skills most present in search profiles
-</p>
-</div>
-<div>
-Ten skills most likely to be learned
-<p>
-    skills most closely related to existing skills
-</p>
+<hr>
+<div class="row">
+    <div class="col-4">
+        <h4>Most wanted</h4>
+            <table class="table table-hover table-striped">
+                <tbody>
+                    <tr *ngFor="let row of topMostSearchedTable">
+                        <td>{{row}}</td>
+                    </tr>
+                </tbody>
+            </table>
+    </div>
+    <div class="col-4">
+            <h4>Most Endorsed</h4>
+        <table class="table table-hover table-striped">
+            <tbody>
+                <tr *ngFor="let row of topMostSearchedTable">
+                    <td>{{row}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-4">
+        <h4>Recommended for learning</h4>
+        <table class="table table-hover table-striped">
+            <tbody>
+                <tr *ngFor="let row of topMostLearnableTable">
+                    <td>{{row[1]}}<sub>{{row[0]}}</sub></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
