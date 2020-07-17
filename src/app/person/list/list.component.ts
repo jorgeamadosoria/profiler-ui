@@ -18,7 +18,7 @@ export class ListComponent implements OnInit {
   closeResult: string;
   modalOptions: NgbModalOptions;
   constructor(
-    private service: Service,
+    public service: Service,
     private modalService: NgbModal
   ) {
     this.modalOptions = {

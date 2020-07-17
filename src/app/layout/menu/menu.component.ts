@@ -9,7 +9,7 @@ import { Service } from 'src/app/service/service';
 export class MenuComponent implements OnInit {
 
   constructor(
-    private service: Service) { }
+    public service: Service) { }
 
   ngOnInit() {
   }
